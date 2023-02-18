@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="726.0" minWidth="1165.0" prefHeight="726.0" prefWidth="1165.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mikel.agl.cliente_ftp.controladores.MainMenuController">
+   <children>
+      <TreeView fx:id="treeViewServer" layoutX="14.0" layoutY="14.0" prefHeight="687.0" prefWidth="1146.0" showRoot="false" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0" />
+   </children>
+</AnchorPane>
