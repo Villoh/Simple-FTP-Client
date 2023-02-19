@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import io.github.palexdev.materialfx.font.MFXFontIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="517.0" styleClass="rootPane" stylesheets="@css/Estilo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mikel.agl.cliente_ftp.controladores.LoginController">
+   <children>
+      <VBox alignment="CENTER" layoutX="8.0" layoutY="36.0" prefHeight="353.0" prefWidth="503.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="35.0">
+         <children>
+            <MFXTextField fx:id="tfUsuario" floatMode="BORDER" floatingText="Introduce el usuario" prefHeight="50.0" prefWidth="450.0" style="-mfx-main: -mfx-purple;">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </MFXTextField>
+            <MFXPasswordField fx:id="pfContrasenia" floatMode="BORDER" floatingText="Introduce la contraseña" prefHeight="50.0" prefWidth="450.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </MFXPasswordField>
+            <MFXTextField fx:id="tfIP" floatMode="BORDER" floatingText="Introduce el puerto" prefHeight="50.0" prefWidth="450.0" />
+            <MFXTextField fx:id="tfPuerto" floatMode="BORDER" floatingText="Introduce el puerto" prefHeight="50.0" prefWidth="450.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </MFXTextField>
+            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="600.0">
+               <children>
+                  <MFXButton buttonType="RAISED" onAction="#connect" prefHeight="30.0" prefWidth="450.0" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" styleClass="left-button" text="Conectar">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </MFXButton>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox fx:id="tittleBar" alignment="TOP_RIGHT" prefHeight="29.0" prefWidth="517.0">
+         <children>
+            <MFXFontIcon fx:id="minimizeIcon" description="mfx-circle" onMouseReleased="#minStage" size="15.0" styleClass="minimize-icon">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </MFXFontIcon>
+            <MFXFontIcon fx:id="closeIcon" description="mfx-circle" onMouseReleased="#closeApp" size="15.0" styleClass="close-icon">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </MFXFontIcon>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </HBox>
+   </children>
+</AnchorPane>

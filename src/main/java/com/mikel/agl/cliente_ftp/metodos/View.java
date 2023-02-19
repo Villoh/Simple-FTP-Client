@@ -9,21 +9,22 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  *
  * @author Villoh
  */
-public class LoadView {
+public class View {
     
-    public static void load(String fxmlName) {
+    public static void load(String fxmlName, Stage stage) {
         Scene scene;
         try {
             scene = new Scene(loadFXML(fxmlName));
-            App.st.setScene(scene);
-            App.st.sizeToScene();
-            App.st.centerOnScreen();
-            App.st.show();
+            stage.setScene(scene);
+            stage.sizeToScene();
+            stage.centerOnScreen();
+            stage.show();
         } catch (IOException ex) {
             System.err.println(ex);
         }

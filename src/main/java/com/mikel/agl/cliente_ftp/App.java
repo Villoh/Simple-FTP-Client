@@ -18,14 +18,13 @@ public class App extends Application {
     public static Stage st;
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("progress"));
+        scene = new Scene(loadFXML("login"));
         st = stage;
         st.setTitle("Cliente FTP");
         st.initStyle(StageStyle.UNDECORATED);
         st.setScene(scene);
         st.sizeToScene();
         st.centerOnScreen();
-        st.setScene(scene);
         st.show();
     }
 

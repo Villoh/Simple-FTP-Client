@@ -1,10 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.font.MFXFontIcon?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="726.0" minWidth="1165.0" prefHeight="726.0" prefWidth="1165.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mikel.agl.cliente_ftp.controladores.MainMenuController">
+<AnchorPane prefHeight="767.0" prefWidth="1186.0" styleClass="rootPane" stylesheets="@css/Estilo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mikel.agl.cliente_ftp.controladores.MainMenuController">
    <children>
-      <TreeView fx:id="treeViewServer" layoutX="14.0" layoutY="14.0" prefHeight="687.0" prefWidth="1146.0" showRoot="false" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0" />
+      <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="29.0" prefWidth="1177.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane fx:id="tittleBar" prefHeight="19.0" prefWidth="1068.0" />
+            <MFXFontIcon fx:id="minimizeIcon" description="mfx-circle" onMouseReleased="#minStage" size="15.0" styleClass="minimize-icon">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </MFXFontIcon>
+            <MFXFontIcon fx:id="alwaysOnTopIcon" description="mfx-circle" onMousePressed="#maxStage" size="15.0" styleClass="always-on-top-icon">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </MFXFontIcon>
+            <MFXFontIcon fx:id="closeIcon" description="mfx-circle" onMouseReleased="#closeApp" size="15.0" styleClass="close-icon">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </MFXFontIcon>
+         </children>
+         <padding>
+            <Insets top="5.0" />
+         </padding>
+      </HBox>
+      <TreeView fx:id="treeViewServer" layoutX="18.0" layoutY="42.0" prefHeight="668.0" prefWidth="1152.0" showRoot="false" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="41.0" />
+      <HBox alignment="CENTER" layoutX="18.0" layoutY="717.0" prefHeight="43.0" prefWidth="1150.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <MFXButton buttonType="RAISED" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+            </MFXButton>
+            <MFXButton buttonType="RAISED" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+            </MFXButton>
+            <MFXButton buttonType="RAISED" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

@@ -4,13 +4,11 @@
  */
 package com.mikel.agl.cliente_ftp.controladores;
 
-import static com.mikel.agl.cliente_ftp.controladores.MainMenuController.rootItem;
-import com.mikel.agl.cliente_ftp.hilos.TreeBuilderThread;
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TreeItem;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -18,7 +16,12 @@ import javafx.scene.control.TreeItem;
  * @author Villoh
  */
 public class ProgressController implements Initializable {
-
+    
+    private double xOffset = 0;
+    private double yOffset = 0;
+    
+    @FXML 
+    private AnchorPane rootPane;
     /**
      * Initializes the controller class.
      * @param url
@@ -26,10 +29,41 @@ public class ProgressController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        File file = new File("F:/");
-        rootItem = new TreeItem<>("F:/");
-        Thread treeThread = new TreeBuilderThread(file, rootItem, true);
-        treeThread.start();
+        makeStageDragable(rootPane);
     }    
+    
+    /**
+     * Hace la interfaz arrastable
+     * @param tittleBar
+     */
+    public void makeStageDragable(AnchorPane tittleBar) {
+
+        tittleBar.setOnMousePressed((event) -> {
+
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
+
+        });
+
+        tittleBar.setOnMouseDragged((event) -> {
+
+            LoginController.newStage.setX(event.getScreenX() - xOffset);
+            LoginController.newStage.setY(event.getScreenY() - yOffset);
+            LoginController.newStage.setOpacity(0.8f);
+
+        });
+
+        tittleBar.setOnDragDone((event) -> {
+
+            LoginController.newStage.setOpacity(1.0f);
+
+        });
+
+        tittleBar.setOnMouseReleased((event) -> {
+
+            LoginController.newStage.setOpacity(1.0f);
+
+        });
+    }
     
 }

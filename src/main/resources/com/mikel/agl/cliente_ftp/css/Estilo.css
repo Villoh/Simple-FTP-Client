@@ -1,0 +1,83 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 12 feb 2023, 11:46:20
+    Author     : Mikel Villota
+*/
+
+@import 'MFXColors.css';
+
+.rootPane {
+	-fx-background-color: white;
+	-fx-background-radius: 10;
+	-fx-border-color: #ebebeb;
+	-fx-border-radius: 10;
+}
+
+/**************************************************
+ * Window Header
+**************************************************/
+.rootPane .close-icon {
+	-mfx-color: -mfx-red;
+	-fx-opacity: 0.5;
+}
+
+.rootPane .close-icon:hover {
+	-fx-opacity: 1.0;
+}
+
+.rootPane .minimize-icon {
+	-mfx-color: #ffbf37;
+	-fx-opacity: 0.5;
+}
+
+.rootPane .minimize-icon:hover {
+	-fx-opacity: 1.0;
+}
+
+.rootPane .always-on-top-icon {
+	-mfx-color: -mfx-purple;
+	-fx-opacity: 0.5;
+}
+
+.rootPane .always-on-top-icon:hover {
+	-fx-opacity: 1.0;
+}
+
+.rootPane .always-on-top-icon:always-on-top {
+	-fx-opacity: 1.0;
+}
+
+.rootPane .minimize-icon {
+	-mfx-color: #ffbf37;
+	-fx-opacity: 0.5;
+}
+
+.rootPane .minimize-icon:hover {
+	-fx-opacity: 1.0;
+}
+
+.default-menu-button{
+    -fx-border-style: none;
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+}
+
+.exit-menu-button{
+    -fx-border-style: none;
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+}
+
+.default-menu-button:hover{
+    -fx-background-color: #cfcfcf;
+}
+
+.exit-menu-button:hover{
+    -fx-background-color: red;
+    -fx-text-fill: white;
+}
+
+
