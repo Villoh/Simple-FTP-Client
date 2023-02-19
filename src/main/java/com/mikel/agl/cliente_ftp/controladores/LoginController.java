@@ -66,6 +66,7 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         makeStageDragable(tittleBar);
         pfContraseniaStatic = pfContrasenia; //Duplica variable, para tener una estática y poder acceder a ella.
+        newStage = new Stage(StageStyle.UNDECORATED); //Inicio la futura ventana principal. Lo tengo que hacer aqui para que solo se inicialice una vez y asi realizar comprobacuiones.
     }
     
     /**
@@ -98,7 +99,6 @@ public class LoginController implements Initializable {
      * Comprueba que el stage no se esté mostrando, en caso afirmativo te muestra un error y en caso negativo te inicializa y ejecuta un hilo.
      */
     private void crearVentanaPrincipal(){
-        newStage = new Stage(StageStyle.UNDECORATED);
         //Comprueba que el stage se esté mostrando
         if (!newStage.isShowing()) {
                hiloConexionFTP = new ConexiónFTPThread(this.tfUsuario.getText(), this.tfIP.getText(), Integer.parseInt(this.tfPuerto.getText()));
