@@ -8,9 +8,9 @@ import com.mikel.agl.cliente_ftp.ResizeHelper;
 import com.mikel.agl.cliente_ftp.controladores.LoginController;
 import com.mikel.agl.cliente_ftp.metodos.View;
 import com.mikel.agl.cliente_ftp.metodos.TreeBuilder;
-import java.io.File;
 import javafx.application.Platform;
 import javafx.scene.control.TreeItem;
+import org.apache.commons.net.ftp.FTPClient;
 /**
  *
  * @author Villoh
@@ -18,20 +18,21 @@ import javafx.scene.control.TreeItem;
 public class TreeBuilderThread extends Thread{
     
     private static TreeItem<String> rootItem;
-    private File file;
-    private boolean isRoot;
+    private FTPClient ftpClient;
     
-    public TreeBuilderThread(File file, TreeItem<String> rootItem, boolean isRoot){
-        this.file = file;
+    public TreeBuilderThread(FTPClient ftpClient, TreeItem<String> rootItem){
+        this.ftpClient = ftpClient;
         TreeBuilderThread.rootItem = rootItem;
-        this.isRoot = isRoot;
     }
     
     @Override
     public void run(){
-        TreeBuilder.construyeArbol(file, rootItem, isRoot);
+        //Construye la vista en arbol.
+        TreeBuilder.construyeArbol(ftpClient, rootItem, "/");
         Platform.runLater(() -> {
+            //Cuando termina de construirla carga la vista principal.
             View.load("main_menu", LoginController.newStage);
+            //Listener para que se pueda redimensionar la vista.
             ResizeHelper.addResizeListener(LoginController.newStage);
         });
     }

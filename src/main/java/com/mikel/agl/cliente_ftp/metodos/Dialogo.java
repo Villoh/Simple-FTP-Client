@@ -11,9 +11,7 @@ import io.github.palexdev.materialfx.dialogs.MFXStageDialog;
 import io.github.palexdev.materialfx.enums.ScrimPriority;
 import io.github.palexdev.materialfx.font.MFXFontIcon;
 import java.util.Map;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -51,34 +49,51 @@ public class Dialogo {
         );
         dialogContent.setMaxSize(400, 200);
     }
-
+    
+    
+    /**
+     * Mensaje de información.
+     */
     public void openInfo() {
-        MFXFontIcon infoIcon = new MFXFontIcon("mfx-info-circle-filled", 18);
+        MFXFontIcon infoIcon = new MFXFontIcon("mfx-info-circle", 18);
         dialogContent.setHeaderIcon(infoIcon);
         convertDialogTo("mfx-info-dialog");
         dialog.showDialog();
     }
-
+    
+    /**
+     * Mensaje de advertencia.
+     */
     public void openWarning() {
         MFXFontIcon warnIcon = new MFXFontIcon("mfx-do-not-enter-circle", 18);
         dialogContent.setHeaderIcon(warnIcon);
         convertDialogTo("mfx-warn-dialog");
         dialog.showDialog();
     }
-
+    
+    /**
+     * Mensaje de error.
+     */
     public void openError() {
         MFXFontIcon errorIcon = new MFXFontIcon("mfx-exclamation-circle-filled", 18);
         dialogContent.setHeaderIcon(errorIcon);
         convertDialogTo("mfx-error-dialog");
         dialog.showDialog();
     }
-
-    public void openGeneric(ActionEvent event) {
+    
+    /**
+     * Mensaje genérico.
+     */
+    public void openGeneric() {
         dialogContent.setHeaderIcon(null);
         convertDialogTo(null);
         dialog.showDialog();
     }
-
+    
+    /**
+     * Cambia el estilo de la clase dialogContent en base al tipo de dialogo
+     * @param styleClass estilo de clase.
+     */
     private void convertDialogTo(String styleClass) {
         dialogContent.getStyleClass().removeIf(
                 s -> s.equals("mfx-info-dialog") || s.equals("mfx-warn-dialog") || s.equals("mfx-error-dialog")

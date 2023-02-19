@@ -1,5 +1,6 @@
 package com.mikel.agl.cliente_ftp.controladores;
 
+import io.github.palexdev.materialfx.controls.MFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -14,9 +15,17 @@ public class MainMenuController implements Initializable{
     @FXML
     private TreeView<String> treeViewServer;
     
-    
     @FXML
     private AnchorPane tittleBar;
+    
+     @FXML
+    private MFXButton buttonBorrar;
+
+    @FXML
+    private MFXButton buttonDescargar;
+
+    @FXML
+    private MFXButton buttonSubir;
     
     public static TreeItem<String> rootItem; 
 

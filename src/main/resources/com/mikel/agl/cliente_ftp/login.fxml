@@ -5,6 +5,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import io.github.palexdev.materialfx.font.MFXFontIcon?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -23,7 +24,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </MFXPasswordField>
-            <MFXTextField fx:id="tfIP" floatMode="BORDER" floatingText="Introduce el puerto" prefHeight="50.0" prefWidth="450.0" />
+            <MFXTextField fx:id="tfIP" floatMode="BORDER" floatingText="Introduce la IP" prefHeight="50.0" prefWidth="450.0" />
             <MFXTextField fx:id="tfPuerto" floatMode="BORDER" floatingText="Introduce el puerto" prefHeight="50.0" prefWidth="450.0">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
@@ -45,6 +46,11 @@
       </VBox>
       <HBox fx:id="tittleBar" alignment="TOP_RIGHT" prefHeight="29.0" prefWidth="517.0">
          <children>
+            <Label styleClass="tittle-label" text="Conexión a Servidor FTP">
+               <HBox.margin>
+                  <Insets right="125.0" />
+               </HBox.margin>
+            </Label>
             <MFXFontIcon fx:id="minimizeIcon" description="mfx-circle" onMouseReleased="#minStage" size="15.0" styleClass="minimize-icon">
                <HBox.margin>
                   <Insets right="10.0" />

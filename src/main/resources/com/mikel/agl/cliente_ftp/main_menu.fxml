@@ -3,6 +3,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.font.MFXFontIcon?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -11,7 +12,11 @@
    <children>
       <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="29.0" prefWidth="1177.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane fx:id="tittleBar" prefHeight="19.0" prefWidth="1068.0" />
+            <AnchorPane fx:id="tittleBar" prefHeight="19.0" prefWidth="1068.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="3.0" prefHeight="18.0" prefWidth="592.0" styleClass="tittle-label" text="Cliente FTP" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
             <MFXFontIcon fx:id="minimizeIcon" description="mfx-circle" onMouseReleased="#minStage" size="15.0" styleClass="minimize-icon">
                <HBox.margin>
                   <Insets right="10.0" />
@@ -32,20 +37,20 @@
             <Insets top="5.0" />
          </padding>
       </HBox>
-      <TreeView fx:id="treeViewServer" layoutX="18.0" layoutY="42.0" prefHeight="668.0" prefWidth="1152.0" showRoot="false" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="41.0" />
+      <TreeView fx:id="treeViewServer" layoutX="18.0" layoutY="42.0" prefHeight="668.0" prefWidth="1152.0" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="41.0" />
       <HBox alignment="CENTER" layoutX="18.0" layoutY="717.0" prefHeight="43.0" prefWidth="1150.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <MFXButton buttonType="RAISED" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9">
+            <MFXButton fx:id="buttonDescargar" buttonType="RAISED" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" text="Descargar Archivo">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
             </MFXButton>
-            <MFXButton buttonType="RAISED" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9">
+            <MFXButton fx:id="buttonSubir" buttonType="RAISED" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" text="Subir Archivo">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
             </MFXButton>
-            <MFXButton buttonType="RAISED" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" />
+            <MFXButton fx:id="buttonBorrar" buttonType="RAISED" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" text="Borrar Archivo" />
          </children>
       </HBox>
    </children>

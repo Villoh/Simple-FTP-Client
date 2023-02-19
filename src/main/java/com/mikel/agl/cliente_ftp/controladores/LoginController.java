@@ -5,21 +5,16 @@
 package com.mikel.agl.cliente_ftp.controladores;
 
 import com.mikel.agl.cliente_ftp.App;
-import static com.mikel.agl.cliente_ftp.controladores.MainMenuController.rootItem;
-import com.mikel.agl.cliente_ftp.hilos.TreeBuilderThread;
+import com.mikel.agl.cliente_ftp.hilos.ConexiónFTPThread;
 import com.mikel.agl.cliente_ftp.metodos.Dialogo;
-import com.mikel.agl.cliente_ftp.metodos.View;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.font.MFXFontIcon;
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TreeItem;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -40,6 +35,8 @@ public class LoginController implements Initializable {
 
     @FXML
     private MFXPasswordField pfContrasenia;
+    
+    public static MFXPasswordField pfContraseniaStatic;
 
     @FXML
     private MFXTextField tfPuerto;
@@ -48,12 +45,14 @@ public class LoginController implements Initializable {
     private MFXTextField tfUsuario;
     
     @FXML
-    private AnchorPane rootPane;
+    private MFXTextField tfIP;
 
     @FXML
     private HBox tittleBar;
     
+    private Dialogo dialogo;
     public static Stage newStage;
+    private Thread hiloConexionFTP;
     
     private double xOffset = 0;
     private double yOffset = 0;
@@ -66,7 +65,7 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         makeStageDragable(tittleBar);
-        newStage = new Stage(StageStyle.UNDECORATED);
+        pfContraseniaStatic = pfContrasenia; //Duplica variable, para tener una estática y poder acceder a ella.
     }
     
     /**
@@ -86,24 +85,26 @@ public class LoginController implements Initializable {
     private void minStage(MouseEvent event) {
         App.st.setIconified(true);
     }
-
+    
+    /**
+     * Acción realizada en el botón conectar.
+     */
     @FXML
     private void connect(){
         crearVentanaPrincipal();
     }
     
     /**
-     * Comprueba que el stage no se esté mostrando, en caso afirmativo te muestra un error y en caso negativo te carga una nueva ventana principal.
+     * Comprueba que el stage no se esté mostrando, en caso afirmativo te muestra un error y en caso negativo te inicializa y ejecuta un hilo.
      */
     private void crearVentanaPrincipal(){
+        newStage = new Stage(StageStyle.UNDECORATED);
+        //Comprueba que el stage se esté mostrando
         if (!newStage.isShowing()) {
-            View.load("progress", newStage);
-            File file = new File("F:/");
-            rootItem = new TreeItem<>("F:/");
-            Thread treeThread = new TreeBuilderThread(file, rootItem, true);
-            treeThread.start();
-        }else{
-            Dialogo dialogo = new Dialogo(App.st, "Error", "Ya tienes una ventana abierta y el máximo número permitido de ventanas principales abiertas es de 1", "Error, ventana principal ya abierta");
+               hiloConexionFTP = new ConexiónFTPThread(this.tfUsuario.getText(), this.tfIP.getText(), Integer.parseInt(this.tfPuerto.getText()));
+               hiloConexionFTP.start();
+        } else {
+            dialogo = new Dialogo(App.st, "Error", "Ya tienes una ventana abierta y el máximo número permitido de ventanas principales abiertas es de 1", "Error, ventana principal ya abierta");
             dialogo.openError();
         }
     }

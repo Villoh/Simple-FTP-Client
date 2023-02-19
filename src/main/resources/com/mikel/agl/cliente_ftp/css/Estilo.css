@@ -59,25 +59,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 	-fx-opacity: 1.0;
 }
 
-.default-menu-button{
-    -fx-border-style: none;
-    -fx-background-color: transparent;
-    -fx-background-radius: 0;
-}
-
-.exit-menu-button{
-    -fx-border-style: none;
-    -fx-background-color: transparent;
-    -fx-background-radius: 0;
-}
-
-.default-menu-button:hover{
-    -fx-background-color: #cfcfcf;
-}
-
-.exit-menu-button:hover{
-    -fx-background-color: red;
-    -fx-text-fill: white;
+.rootPane .tittle-label{
+    -fx-font-family: Calibri;
+    -fx-font-size: 16px;
 }
 
 
