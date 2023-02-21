@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -22,6 +23,8 @@ public class ProgressController implements Initializable {
     
     @FXML 
     private AnchorPane rootPane;
+    
+    private Stage stage;
     /**
      * Initializes the controller class.
      * @param url
@@ -47,23 +50,26 @@ public class ProgressController implements Initializable {
 
         tittleBar.setOnMouseDragged((event) -> {
 
-            LoginController.newStage.setX(event.getScreenX() - xOffset);
-            LoginController.newStage.setY(event.getScreenY() - yOffset);
-            LoginController.newStage.setOpacity(0.8f);
+            stage.setX(event.getScreenX() - xOffset);
+            stage.setY(event.getScreenY() - yOffset);
+            stage.setOpacity(0.8f);
 
         });
 
         tittleBar.setOnDragDone((event) -> {
 
-            LoginController.newStage.setOpacity(1.0f);
+            stage.setOpacity(1.0f);
 
         });
 
         tittleBar.setOnMouseReleased((event) -> {
 
-            LoginController.newStage.setOpacity(1.0f);
+            stage.setOpacity(1.0f);
 
         });
     }
-    
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
 }

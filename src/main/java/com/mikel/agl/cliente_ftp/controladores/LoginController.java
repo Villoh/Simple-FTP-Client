@@ -5,13 +5,14 @@
 package com.mikel.agl.cliente_ftp.controladores;
 
 import com.mikel.agl.cliente_ftp.App;
-import com.mikel.agl.cliente_ftp.hilos.ConexiónFTPThread;
+import com.mikel.agl.cliente_ftp.hilos.ConexionFTPThread;
 import com.mikel.agl.cliente_ftp.metodos.Dialogo;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.font.MFXFontIcon;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
@@ -66,7 +67,6 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         makeStageDragable(tittleBar);
         pfContraseniaStatic = pfContrasenia; //Duplica variable, para tener una estática y poder acceder a ella.
-        newStage = new Stage(StageStyle.UNDECORATED); //Inicio la futura ventana principal. Lo tengo que hacer aqui para que solo se inicialice una vez y asi realizar comprobacuiones.
     }
     
     /**
@@ -98,13 +98,13 @@ public class LoginController implements Initializable {
     /**
      * Comprueba que el stage no se esté mostrando, en caso afirmativo te muestra un error y en caso negativo te inicializa y ejecuta un hilo.
      */
-    private void crearVentanaPrincipal(){
-        //Comprueba que el stage se esté mostrando
-        if (!newStage.isShowing()) {
-               hiloConexionFTP = new ConexiónFTPThread(this.tfUsuario.getText(), this.tfIP.getText(), Integer.parseInt(this.tfPuerto.getText()));
-               hiloConexionFTP.start();
-        } else {
-            dialogo = new Dialogo(App.st, "Error", "Ya tienes una ventana abierta y el máximo número permitido de ventanas principales abiertas es de 1", "Error, ventana principal ya abierta");
+    private void crearVentanaPrincipal() {
+        Stage stage = new Stage(StageStyle.UNDECORATED); //Inicio la futura ventana principal. Lo tengo que hacer aqui para que solo se inicialice una vez y asi realizar comprobacuiones.
+        if (isNumeric(this.tfPuerto.getText())) {
+            hiloConexionFTP = new ConexionFTPThread(this.tfUsuario.getText(), this.tfIP.getText(), Integer.parseInt(this.tfPuerto.getText()), stage);
+            hiloConexionFTP.start();
+        }else{
+            dialogo = new Dialogo(App.st, "Error", "El campo puerto introducido no es númerico o lo has dejado vacío, asegurate de que este campo sea explicitamente númerico.", "Error en el campo puerto");
             dialogo.openError();
         }
     }
@@ -141,5 +141,15 @@ public class LoginController implements Initializable {
             App.st.setOpacity(1.0f);
 
         });
+    }
+    
+    /**
+     * Comprueba que un String sea númerico
+     * @param string string que va a comprobar
+     * @return boolean
+     */
+    public boolean isNumeric(String string) {
+        String regex = "[0-9]+[\\.]?[0-9]*";
+        return Pattern.matches(regex, string);
     }
 }

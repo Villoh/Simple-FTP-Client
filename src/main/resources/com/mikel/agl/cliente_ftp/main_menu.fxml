@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="767.0" prefWidth="1186.0" styleClass="rootPane" stylesheets="@css/Estilo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mikel.agl.cliente_ftp.controladores.MainMenuController">
+<AnchorPane fx:id="rootPane" prefHeight="767.0" prefWidth="1186.0" styleClass="rootPane" stylesheets="@css/Estilo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mikel.agl.cliente_ftp.controladores.MainMenuController">
    <children>
       <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="29.0" prefWidth="1177.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -37,20 +37,20 @@
             <Insets top="5.0" />
          </padding>
       </HBox>
-      <TreeView fx:id="treeViewServer" layoutX="18.0" layoutY="42.0" prefHeight="668.0" prefWidth="1152.0" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="41.0" />
+      <TreeView fx:id="treeViewServer" layoutX="18.0" layoutY="42.0" onMouseClicked="#onItemSelected" prefHeight="668.0" prefWidth="1152.0" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="41.0" />
       <HBox alignment="CENTER" layoutX="18.0" layoutY="717.0" prefHeight="43.0" prefWidth="1150.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <MFXButton fx:id="buttonDescargar" buttonType="RAISED" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" text="Descargar Archivo">
+            <MFXButton fx:id="buttonDescargar" buttonType="RAISED" onAction="#onDescargarAction" prefWidth="364.0" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" text="Descargar Archivo">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
             </MFXButton>
-            <MFXButton fx:id="buttonSubir" buttonType="RAISED" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" text="Subir Archivo">
+            <MFXButton fx:id="buttonSubir" buttonType="RAISED" onAction="#onSubirAction" prefWidth="364.0" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" text="Subir Archivo">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
             </MFXButton>
-            <MFXButton fx:id="buttonBorrar" buttonType="RAISED" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" text="Borrar Archivo" />
+            <MFXButton fx:id="buttonBorrar" buttonType="RAISED" onAction="#onBorrarAction" prefWidth="364.0" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" text="Borrar Archivo" />
          </children>
       </HBox>
    </children>

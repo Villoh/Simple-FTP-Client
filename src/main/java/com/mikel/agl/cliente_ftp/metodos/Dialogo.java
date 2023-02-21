@@ -11,7 +11,6 @@ import io.github.palexdev.materialfx.dialogs.MFXStageDialog;
 import io.github.palexdev.materialfx.enums.ScrimPriority;
 import io.github.palexdev.materialfx.font.MFXFontIcon;
 import java.util.Map;
-import javafx.event.ActionEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 

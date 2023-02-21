@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.scene.image.Image;
 import javafx.stage.StageStyle;
 
 /**
@@ -21,6 +22,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("login"));
         st = stage;
         st.setTitle("Cliente FTP");
+        st.getIcons().add(new Image(App.class.getResourceAsStream("resources/icon.png")));
         st.initStyle(StageStyle.UNDECORATED);
         st.setScene(scene);
         st.sizeToScene();

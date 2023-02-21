@@ -5,35 +5,49 @@
 package com.mikel.agl.cliente_ftp.hilos;
 
 import com.mikel.agl.cliente_ftp.ResizeHelper;
-import com.mikel.agl.cliente_ftp.controladores.LoginController;
+import com.mikel.agl.cliente_ftp.metodos.ConexionFTP;
 import com.mikel.agl.cliente_ftp.metodos.View;
 import com.mikel.agl.cliente_ftp.metodos.TreeBuilder;
+import java.io.IOException;
 import javafx.application.Platform;
 import javafx.scene.control.TreeItem;
-import org.apache.commons.net.ftp.FTPClient;
+import javafx.stage.Stage;
 /**
  *
  * @author Villoh
  */
 public class TreeBuilderThread extends Thread{
     
-    private static TreeItem<String> rootItem;
-    private FTPClient ftpClient;
+    private TreeItem<String> rootItem;
+    private ConexionFTP ftp;
+    private Stage stage;
     
-    public TreeBuilderThread(FTPClient ftpClient, TreeItem<String> rootItem){
-        this.ftpClient = ftpClient;
-        TreeBuilderThread.rootItem = rootItem;
+    public TreeBuilderThread(ConexionFTP ftp, TreeItem<String> rootItem, Stage stage){
+        this.ftp = ftp;
+        this.rootItem = rootItem;
+        this.stage = stage;
     }
     
     @Override
     public void run(){
         //Construye la vista en arbol.
-        TreeBuilder.construyeArbol(ftpClient, rootItem, "/");
+        TreeBuilder.construyeArbol(ftp.getfTPClient(), rootItem, "/");
         Platform.runLater(() -> {
+            //Crea un evento que cierra el FTPClient si el FTPClient está conectado, esto sucede cuando el usuario solicita cerrar la ventana.
+            stage.setOnHiding(event -> {
+                try {
+                    if (ftp.isLogued()) {
+                        ftp.getfTPClient().logout();
+                        ftp.getfTPClient().disconnect();
+                    }
+                } catch (IOException ex) {
+                    System.err.println(ex);
+                }
+            });
             //Cuando termina de construirla carga la vista principal.
-            View.load("main_menu", LoginController.newStage);
+            View.loadMainMenu(stage, ftp);
             //Listener para que se pueda redimensionar la vista.
-            ResizeHelper.addResizeListener(LoginController.newStage);
+            ResizeHelper.addResizeListener(stage);
         });
     }
 }
