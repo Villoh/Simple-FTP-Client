@@ -38,19 +38,37 @@
          </padding>
       </HBox>
       <TreeView fx:id="treeViewServer" layoutX="18.0" layoutY="42.0" onMouseClicked="#onItemSelected" prefHeight="668.0" prefWidth="1152.0" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="41.0" />
-      <HBox alignment="CENTER" layoutX="18.0" layoutY="717.0" prefHeight="43.0" prefWidth="1150.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <HBox alignment="CENTER" layoutX="20.0" layoutY="717.0" prefHeight="43.0" prefWidth="1150.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="17.0">
          <children>
-            <MFXButton fx:id="buttonDescargar" buttonType="RAISED" onAction="#onDescargarAction" prefWidth="364.0" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" text="Descargar Archivo">
+            <MFXButton fx:id="buttonDescargar" buttonType="RAISED" onAction="#onDescargarAction" prefHeight="25.0" prefWidth="220.0" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" text="Descargar Archivo">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
             </MFXButton>
-            <MFXButton fx:id="buttonSubir" buttonType="RAISED" onAction="#onSubirAction" prefWidth="364.0" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" text="Subir Archivo">
+            <MFXButton fx:id="buttonSubir" buttonType="RAISED" onAction="#onSubirAction" prefWidth="220.0" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" text="Subir Archivo">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
             </MFXButton>
-            <MFXButton fx:id="buttonBorrar" buttonType="RAISED" onAction="#onBorrarAction" prefWidth="364.0" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" text="Borrar Archivo" />
+            <MFXButton fx:id="buttonBorrar" buttonType="RAISED" onAction="#onBorrarAction" prefWidth="220.0" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" text="Borrar Archivo">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin></MFXButton>
+            <MFXButton fx:id="buttonCrearDirectorio" buttonType="RAISED" onAction="#onCrearDirectorioAction" prefWidth="220.0" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" text="Crear Directorio">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+            </MFXButton>
+            <MFXButton fx:id="buttonBorrarDirectorio" buttonType="RAISED" onAction="#onBorrarDirectorioAction" prefWidth="220.0" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" text="Borrar Directorio">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+            </MFXButton>
+            <MFXButton fx:id="buttonActualizar" buttonType="RAISED" minWidth="-Infinity" onAction="#onActualizarAction" prefHeight="28.0" prefWidth="36.0" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#7a0ed9" styleClass="tittle-label" text="⟳">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </MFXButton>
          </children>
       </HBox>
    </children>

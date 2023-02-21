@@ -13,12 +13,12 @@ import io.github.palexdev.materialfx.font.MFXFontIcon;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -91,7 +91,7 @@ public class LoginController implements Initializable {
      * Acción realizada en el botón conectar.
      */
     @FXML
-    private void connect(){
+    private void connect(ActionEvent event){
         crearVentanaPrincipal();
     }
     
@@ -99,9 +99,8 @@ public class LoginController implements Initializable {
      * Comprueba que el stage no se esté mostrando, en caso afirmativo te muestra un error y en caso negativo te inicializa y ejecuta un hilo.
      */
     private void crearVentanaPrincipal() {
-        Stage stage = new Stage(StageStyle.UNDECORATED); //Inicio la futura ventana principal. Lo tengo que hacer aqui para que solo se inicialice una vez y asi realizar comprobacuiones.
         if (isNumeric(this.tfPuerto.getText())) {
-            hiloConexionFTP = new ConexionFTPThread(this.tfUsuario.getText(), this.tfIP.getText(), Integer.parseInt(this.tfPuerto.getText()), stage);
+            hiloConexionFTP = new ConexionFTPThread(this.tfUsuario.getText(), this.tfIP.getText(), Integer.parseInt(this.tfPuerto.getText()));
             hiloConexionFTP.start();
         }else{
             dialogo = new Dialogo(App.st, "Error", "El campo puerto introducido no es númerico o lo has dejado vacío, asegurate de que este campo sea explicitamente númerico.", "Error en el campo puerto");

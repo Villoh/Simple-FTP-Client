@@ -45,7 +45,7 @@ public class TreeBuilderThread extends Thread{
                 }
             });
             //Cuando termina de construirla carga la vista principal.
-            View.loadMainMenu(stage, ftp);
+            View.loadMainMenu(stage, ftp, rootItem);
             //Listener para que se pueda redimensionar la vista.
             ResizeHelper.addResizeListener(stage);
         });

@@ -24,7 +24,10 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </MFXPasswordField>
-            <MFXTextField fx:id="tfIP" floatMode="BORDER" floatingText="Introduce la IP" prefHeight="50.0" prefWidth="450.0" />
+            <MFXTextField fx:id="tfIP" floatMode="BORDER" floatingText="Introduce la IP" prefHeight="50.0" prefWidth="450.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin></MFXTextField>
             <MFXTextField fx:id="tfPuerto" floatMode="BORDER" floatingText="Introduce el puerto" prefHeight="50.0" prefWidth="450.0">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />

@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.stage.StageStyle;
 
 /**
@@ -23,7 +24,8 @@ public class App extends Application {
         st = stage;
         st.setTitle("Cliente FTP");
         st.getIcons().add(new Image(App.class.getResourceAsStream("resources/icon.png")));
-        st.initStyle(StageStyle.UNDECORATED);
+        st.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(Color.TRANSPARENT);
         st.setScene(scene);
         st.sizeToScene();
         st.centerOnScreen();

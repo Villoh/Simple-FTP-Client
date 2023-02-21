@@ -5,9 +5,11 @@
 package com.mikel.agl.cliente_ftp.metodos;
 
 import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.dialogs.MFXGenericDialog;
 import io.github.palexdev.materialfx.dialogs.MFXGenericDialogBuilder;
 import io.github.palexdev.materialfx.dialogs.MFXStageDialog;
+import io.github.palexdev.materialfx.enums.FloatMode;
 import io.github.palexdev.materialfx.enums.ScrimPriority;
 import io.github.palexdev.materialfx.font.MFXFontIcon;
 import java.util.Map;
@@ -21,6 +23,7 @@ import javafx.stage.Stage;
 public class Dialogo {
     private MFXGenericDialog dialogContent;
     private MFXStageDialog dialog;
+    private MFXTextField textoFieldInput;
     
     public Dialogo(Stage stage, String titulo, String textoContenido, String textoHeader) {
         this.dialogContent = MFXGenericDialogBuilder.build()
@@ -42,8 +45,6 @@ public class Dialogo {
                 .get();
 
         dialogContent.addActions(
-//                Map.entry(new MFXButton("Confirm"), event -> {
-//                }),
                 Map.entry(new MFXButton("Confirmar"), event -> dialog.close())
         );
         dialogContent.setMaxSize(400, 200);
@@ -58,6 +59,25 @@ public class Dialogo {
         dialogContent.setHeaderIcon(infoIcon);
         convertDialogTo("mfx-info-dialog");
         dialog.showDialog();
+    }
+    
+    /**
+     * Mensaje de información con input.
+     * @param promptText
+     */
+    public void openInput(String promptText) {
+        MFXFontIcon infoIcon = new MFXFontIcon("mfx-info-circle", 18);
+        dialogContent.setHeaderIcon(infoIcon);
+        dialogContent.clearActions();
+        textoFieldInput = new MFXTextField();
+        textoFieldInput.setFloatMode(FloatMode.INLINE);
+        textoFieldInput.setPrefSize(250, 50);
+        textoFieldInput.setFloatingText(promptText);
+        dialogContent.addActions(
+            Map.entry(textoFieldInput, event -> {}),
+            Map.entry(new MFXButton("Confirmar"), event -> dialog.close()));
+        convertDialogTo("mfx-info-dialog");
+        dialog.showAndWait();
     }
     
     /**
@@ -101,5 +121,9 @@ public class Dialogo {
         if (styleClass != null) {
             dialogContent.getStyleClass().add(styleClass);
         }
+    }
+
+    public String getTextoFieldInput() {
+        return textoFieldInput.getText();
     }
 }

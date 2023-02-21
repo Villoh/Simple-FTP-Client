@@ -5,12 +5,12 @@
 package com.mikel.agl.cliente_ftp.hilos;
 
 import com.mikel.agl.cliente_ftp.controladores.LoginController;
-import static com.mikel.agl.cliente_ftp.controladores.MainMenuController.rootItem;
 import com.mikel.agl.cliente_ftp.metodos.ConexionFTP;
 import com.mikel.agl.cliente_ftp.metodos.View;
 import javafx.application.Platform;
 import javafx.scene.control.TreeItem;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -22,14 +22,14 @@ public class ConexionFTPThread extends Thread{
     private String ip;
     private int port;
     private Stage stage;
-    
+    private TreeItem<String> rootItem;
     private ConexionFTP ftp;
     
-    public ConexionFTPThread(String usuario, String ip, int port, Stage stage){
+    public ConexionFTPThread(String usuario, String ip, int port){
         this.usuario = usuario;
         this.ip = ip;
         this.port = port;
-        this.stage = stage;
+        this.stage = new Stage(StageStyle.TRANSPARENT); //Inicio la futura ventana principal.
     }
     
     @Override
@@ -43,6 +43,7 @@ public class ConexionFTPThread extends Thread{
                 View.loadProgress(stage);
                 //Inicializa el rootItem del controlador MainMenu que será el padre del vista en arbol.
                 rootItem = new TreeItem<>("Ruta raíz del servidor FTP");
+                ftp.setRootItem(rootItem);
                 //Inicializa un hilo para construir la vista en arbol.
                 Thread treeThread = new TreeBuilderThread(ftp, rootItem, stage);
                 treeThread.start();

@@ -4,16 +4,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 */
 /* 
     Created on : 12 feb 2023, 11:46:20
-    Author     : Mikel Villota
+    Author     : Villoh
 */
 
 @import 'MFXColors.css';
 
 .rootPane {
-	-fx-background-color: white;
-	-fx-background-radius: 10;
-	-fx-border-color: #ebebeb;
-	-fx-border-radius: 10;
+    -fx-background-radius: 25px;
 }
 
 /**************************************************
